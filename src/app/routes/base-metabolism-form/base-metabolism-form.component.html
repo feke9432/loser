@@ -1,0 +1,48 @@
+<div>
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="height">身高</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <nz-input-number formControlName="height" [nzMin]="1"  [nzStep]="1"></nz-input-number>
+        <span style="margin-left: 8px;">cm</span>
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="weight">体重</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <nz-input-number formControlName="weight" [nzMin]="1"  [nzStep]="1"></nz-input-number>
+        <span style="margin-left: 8px;">kg</span>
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="age">年龄</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <nz-input-number formControlName="age" [nzMin]="1"  [nzStep]="1"></nz-input-number>
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="">基础代谢</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <div>
+          [90 + 4.8 * {{validateForm.controls.height.value || 0}} + 13.4 * {{validateForm.controls.weight.value || 0}} - 5.7 * {{validateForm.controls.age.value || 0}}] * 1.2 = {{result| number }}
+        </div>
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="">热量分配</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <div>
+          <div>蛋白质（40%）： {{result * 0.4 | number}}</div>
+          <div>脂肪（20%）： {{result * 0.2 | number}}</div>
+          <div>碳水（40%）： {{result * 0.4 | number}}</div>
+        </div>
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor=""></nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <button nz-button nzType="primary" type="submit">计算</button>
+      </nz-form-control>
+    </nz-form-item >
+  </form>
+</div>
